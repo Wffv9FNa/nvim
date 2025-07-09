@@ -20,12 +20,31 @@ vim.opt.rtp:prepend(lazypath)
 -- |  __/| | |_| | (_| | | | | \__ \
 -- |_|   |_|\__,_|\__, |_|_| |_|___/
 --                |___/
+
+-- Font used - CyberMedium
 require("lazy").setup({
+
+  -- ___ ____ ____ ____ ____ _ ___ ___ ____ ____
+  --  |  |__/ |___ |___ [__  |  |   |  |___ |__/
+  --  |  |  \ |___ |___ ___] |  |   |  |___ |  \
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",  -- Ensures parsers are up-to-date
     config = function()
       require("plugins.treesitter")
+    end,
+  },
+
+  -- ____ _   _ ___  ____ ____ ___  ____ ____ ____ _  _
+  -- |     \_/  |__] |___ |__/ |  \ |__/ |___ |__| |\/|
+  -- |___   |   |__] |___ |  \ |__/ |  \ |___ |  | |  |
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("plugins.cyberdream")
+      vim.cmd("colorscheme cyberdream")
     end,
   },
 })
