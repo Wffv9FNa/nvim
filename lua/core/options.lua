@@ -21,6 +21,9 @@ opt.hlsearch = true            -- Highlight search matches
 opt.cursorline = true          -- Highlight current line
 opt.scrolloff = 8              -- Keep 8 lines above/below cursor
 
+-- Mouse
+opt.mouse = 'a'                -- Enable mouse in all modes
+
 -- Appearance
 opt.termguicolors = true       -- True color support
 opt.signcolumn = "yes"         -- Always show sign column

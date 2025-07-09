@@ -11,3 +11,6 @@ keymap(n, "<C-l>", "<C-w>l", opts)             -- Move to right window  Ctrl-l
 
 -- Exit terminal mode with Esc
 keymap(t, "<Esc>", [[<C-\><C-n>]], opts)       -- Leave terminal insert mode
+
+-- Save
+keymap(n, '<leader>w', '<cmd>write<cr>', {desc = 'Save'}) -- Save with Space-w
