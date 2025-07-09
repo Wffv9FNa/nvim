@@ -1,0 +1,4 @@
+# Ignore local plugin data or compiled files
+*.luac
+*.swp
+*.tmp
