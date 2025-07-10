@@ -58,5 +58,23 @@ require("lazy").setup({
       require("plugins.whichkey")
     end,
   },
+
+  -- ___ ____ _    ____ ____ ____ ____ ___  ____
+  --  |  |___ |    |___ [__  |    |  | |__] |___
+  --  |  |___ |___ |___ ___] |___ |__| |    |___
+  {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make"
+      }
+    },
+    config = function()
+      require("plugins.telescope")
+    end,
+  },
 })
 

@@ -19,11 +19,18 @@ keymap(n, '<leader>fn', '<cmd>enew<cr>', {desc = 'New File'})
 keymap(n, '<leader>fq', '<cmd>q<cr>', {desc = 'Quit'})
 keymap(n, '<leader>fx', '<cmd>x<cr>', {desc = 'Save & Quit'})
 
+-- Telescope
+keymap(n, '<leader>ff', '<cmd>Telescope find_files<cr>', {desc = 'Find Files'})
+keymap(n, '<leader>fw', '<cmd>Telescope live_grep<cr>', {desc = 'Find Word'})
+keymap(n, '<leader>fr', '<cmd>Telescope oldfiles<cr>', {desc = 'Find Recent Files'})
+keymap(n, '<leader>fc', '<cmd>Telescope colorscheme<cr>', {desc = 'Find Colorscheme'})
+
 -- Buffer operations
 keymap(n, '<leader>bl', '<cmd>ls<cr>', {desc = 'List Buffers'})
 keymap(n, '<leader>bd', '<cmd>bdelete<cr>', {desc = 'Delete Buffer'})
 keymap(n, '<leader>bn', '<cmd>bnext<cr>', {desc = 'Next Buffer'})
 keymap(n, '<leader>bp', '<cmd>bprevious<cr>', {desc = 'Previous Buffer'})
+keymap(n, '<leader>bb', '<cmd>Telescope buffers<cr>', {desc = 'Browse Buffers'})
 
 -- Split operations
 keymap(n, '<leader>sv', '<cmd>vsplit<cr>', {desc = 'Vertical Split'})
