@@ -30,6 +30,23 @@ telescope.setup({
     grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
     qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
+    -- Set vimgrep arguments based on available tools
+    vimgrep_arguments = vim.fn.executable("rg") == 1 and {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--hidden"
+    } or {
+      "grep",
+      "--recursive",
+      "--line-number",
+      "--exclude-dir=.git",
+    },
+
     mappings = {
       i = {
         -- Insert mode mappings
@@ -94,14 +111,19 @@ telescope.setup({
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
     find_files = {
-      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+      -- Use find as fallback if rg is not available
+      find_command = vim.fn.executable("rg") == 1
+        and { "rg", "--files", "--hidden", "--glob", "!**/.git/*" }
+        or vim.fn.executable("fd") == 1
+        and { "fd", "--type", "f", "--hidden", "--exclude", ".git" }
+        or { "find", ".", "-type", "f" },
       previewer = true,
       layout_strategy = "horizontal",
     },
 
     live_grep = {
       additional_args = function(opts)
-        return {"--hidden"}
+        return vim.fn.executable("rg") == 1 and {"--hidden"} or {}
       end,
       previewer = true,
       layout_strategy = "horizontal",
