@@ -40,11 +40,20 @@ telescope.setup({
       "--column",
       "--smart-case",
       "--hidden"
-    } or {
+    } or vim.fn.executable("grep") == 1 and {
       "grep",
       "--recursive",
       "--line-number",
       "--exclude-dir=.git",
+      "--exclude-dir=node_modules",
+      "--binary-files=without-match",
+      "--color=never"
+    } or {
+      -- Fallback to basic grep
+      "grep",
+      "-r",
+      "-n",
+      "--color=never"
     },
 
     mappings = {
@@ -127,6 +136,9 @@ telescope.setup({
       end,
       previewer = true,
       layout_strategy = "horizontal",
+      -- Explicitly set the grep command if rg is not available
+      grep_open_files = false,
+      prompt_title = "Live Grep",
     },
 
     buffers = {
@@ -205,3 +217,17 @@ telescope.setup({
 
 -- Load extensions
 telescope.load_extension('fzf')
+
+-- Custom live_grep function for better compatibility
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>fw', function()
+  if vim.fn.executable("rg") == 1 then
+    builtin.live_grep()
+  else
+    -- Fallback to grep_string with prompting
+    builtin.grep_string({
+      search = vim.fn.input("Grep for > "),
+      use_regex = true,
+    })
+  end
+end, { desc = "Live Grep / Grep String" })
