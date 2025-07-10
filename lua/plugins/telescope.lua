@@ -10,6 +10,26 @@ telescope.setup({
     path_display = { "truncate" },
     file_ignore_patterns = { "%.git/", "node_modules", "%.npm" },
 
+    -- Layout configuration
+    layout_config = {
+      horizontal = {
+        prompt_position = "top",
+        preview_width = 0.55,
+        results_width = 0.8,
+      },
+      vertical = {
+        mirror = false,
+      },
+      width = 0.87,
+      height = 0.80,
+      preview_cutoff = 120,
+    },
+
+    -- Enable file previewer
+    file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+    grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+    qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+
     mappings = {
       i = {
         -- Insert mode mappings
@@ -74,20 +94,25 @@ telescope.setup({
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
     find_files = {
-      theme = "dropdown",
-      previewer = false,
+      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+      previewer = true,
+      layout_strategy = "horizontal",
     },
 
     live_grep = {
       additional_args = function(opts)
         return {"--hidden"}
-      end
+      end,
+      previewer = true,
+      layout_strategy = "horizontal",
     },
 
     buffers = {
-      theme = "dropdown",
-      previewer = false,
+      show_all_buffers = true,
+      sort_lastused = true,
+      previewer = true,
       initial_mode = "normal",
+      layout_strategy = "horizontal",
       mappings = {
         i = {
           ["<C-d>"] = actions.delete_buffer,
@@ -100,26 +125,43 @@ telescope.setup({
 
     colorscheme = {
       enable_preview = true,
+      layout_strategy = "horizontal",
     },
 
     lsp_references = {
-      theme = "dropdown",
       initial_mode = "normal",
+      layout_strategy = "vertical",
+      sorting_strategy = "ascending",
+      layout_config = {
+        prompt_position = "top",
+      },
     },
 
     lsp_definitions = {
-      theme = "dropdown",
       initial_mode = "normal",
+      layout_strategy = "vertical",
+      sorting_strategy = "ascending",
+      layout_config = {
+        prompt_position = "top",
+      },
     },
 
     lsp_declarations = {
-      theme = "dropdown",
       initial_mode = "normal",
+      layout_strategy = "vertical",
+      sorting_strategy = "ascending",
+      layout_config = {
+        prompt_position = "top",
+      },
     },
 
     lsp_implementations = {
-      theme = "dropdown",
       initial_mode = "normal",
+      layout_strategy = "vertical",
+      sorting_strategy = "ascending",
+      layout_config = {
+        prompt_position = "top",
+      },
     },
   },
 
