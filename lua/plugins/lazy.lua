@@ -47,5 +47,16 @@ require("lazy").setup({
       vim.cmd("colorscheme cyberdream")
     end,
   },
+
+  -- _ _ _ _  _ _ ____ _  _ _  _ ____ _   _
+  -- | | | |__| | |    |__| |_/  |___  \_/
+  -- |_|_| |  | | |___ |  | | \_ |___   |
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("plugins.whichkey")
+    end,
+  },
 })
 
