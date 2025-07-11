@@ -87,5 +87,20 @@ require("lazy").setup({
       require("plugins.lualine")
     end,
   },
+
+  -- _  _ ____ _ ____ ____
+  -- |\ | |  | | |    |___
+  -- | \| |__| | |___ |___
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("plugins.noice")
+    end,
+  },
 })
 
