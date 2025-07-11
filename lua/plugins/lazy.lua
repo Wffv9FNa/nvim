@@ -87,5 +87,23 @@ require("lazy").setup({
       require("plugins.lualine")
     end,
   },
+
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {},
+    dependencies = {
+      "MunifTanjim/nui.nvim"
+    },
+    config = function(_, opts)
+      -- HACK: noice shows messages from before it was enabled,
+      -- but this is not ideal when Lazy is installing plugins,
+      -- so clear the messages in this case.
+      if vim.o.filetype == "lazy" then
+        vim.cmd([[messages clear]])
+      end
+      require("plugins.noice")()
+    end,
+  },
 })
 

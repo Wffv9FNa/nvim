@@ -10,6 +10,7 @@ opt.smartindent = true         -- Autoindent new lines
 
 -- Line wrapping
 opt.wrap = false               -- Disable line wrap
+opt.relativenumber = true      -- Relative line numbers
 
 -- Search
 opt.ignorecase = true          -- Case-insensitive search...
@@ -27,6 +28,7 @@ opt.mouse = 'a'                -- Enable mouse in all modes
 -- Appearance
 opt.termguicolors = true       -- True color support
 opt.signcolumn = "yes"         -- Always show sign column
+g.have_nerd_font = true        -- Enable NerdFont
 --opt.colorcolumn = "80"         -- Visual ruler at 80 chars
 
 -- Splits
