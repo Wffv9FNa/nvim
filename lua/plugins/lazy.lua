@@ -76,5 +76,16 @@ require("lazy").setup({
       require("plugins.telescope")
     end,
   },
+
+  -- _    _  _ ____ _    _ _  _ ____
+  -- |    |  | |__| |    | |\ | |___
+  -- |___ |__| |  | |___ | | \| |___
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("plugins.lualine")
+    end,
+  },
 })
 
