@@ -14,6 +14,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 --  ____  _             _
 -- |  _ \| |_   _  __ _(_)_ __  ___
 -- | |_) | | | | |/ _` | | '_ \/ __|
@@ -88,6 +89,9 @@ require("lazy").setup({
     end,
   },
 
+  -- _  _ ____ _ ____ ____
+  -- |\ | |  | | |    |___
+  -- | \| |__| | |___ |___
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -106,4 +110,3 @@ require("lazy").setup({
     end,
   },
 })
-
