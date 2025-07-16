@@ -36,16 +36,16 @@ require("lazy").setup({
     end,
   },
 
-  -- ____ _   _ ___  ____ ____ ___  ____ ____ ____ _  _
-  -- |     \_/  |__] |___ |__/ |  \ |__/ |___ |__| |\/|
-  -- |___   |   |__] |___ |  \ |__/ |  \ |___ |  | |  |
+-- ___  ____ ____ ____ _  _ _    ____
+-- |  \ |__/ |__| |    |  | |    |__|
+-- |__/ |  \ |  | |___ |__| |___ |  |
   {
-    "scottmckendry/cyberdream.nvim",
+    "Mofiqul/dracula.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("plugins.cyberdream")
-      vim.cmd("colorscheme cyberdream")
+      require("plugins.dracula")()
+      vim.cmd("colorscheme dracula")
     end,
   },
 
