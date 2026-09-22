@@ -1,3 +1,12 @@
+-- Fix Windows short path names (e.g. PROGRA~1) that break glob patterns in packadd
+if vim.fn.has("win32") == 1 then
+  local uv = vim.uv or vim.loop
+  local real = uv.fs_realpath(vim.env.VIMRUNTIME)
+  if real then
+    vim.env.VIMRUNTIME = real
+  end
+end
+
 -- Local Variables for easy reading
 local opt = vim.opt
 local g = vim.g
