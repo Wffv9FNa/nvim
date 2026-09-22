@@ -97,7 +97,16 @@ require("lazy").setup({
     event = "VeryLazy",
     opts = {},
     dependencies = {
-      "MunifTanjim/nui.nvim"
+      "MunifTanjim/nui.nvim",
+      {
+        "rcarriga/nvim-notify",
+        opts = {
+          stages = "static",
+          timeout = 3000,
+          render = "default",
+          top_down = false,
+        },
+      },
     },
     config = function(_, opts)
       -- HACK: noice shows messages from before it was enabled,

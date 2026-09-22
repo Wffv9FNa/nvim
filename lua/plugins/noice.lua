@@ -19,7 +19,7 @@ M.setup = function()
             { find = "; before #%d+" },
           },
         },
-        view = "popup",
+        view = "notify",
       },
     },
     views = {
