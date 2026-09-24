@@ -30,6 +30,8 @@ require("lazy").setup({
   --  |  |  \ |___ |___ ___] |  |   |  |___ |  \
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,  -- The main branch does not support lazy-loading.
     build = ":TSUpdate",  -- Ensures parsers are up-to-date
     config = function()
       require("plugins.treesitter")
