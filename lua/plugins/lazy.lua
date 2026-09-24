@@ -118,4 +118,36 @@ require("lazy").setup({
       require("plugins.noice")()
     end,
   },
+
+  -- _  _ ____ ____ ____ _  _
+  -- |\/| |__| [__  |  | |\ |
+  -- |  | |  | ___] |__| | \|
+  {
+    "mason-org/mason-lspconfig.nvim",
+    -- BufReadPre, not VeryLazy: `nvim some.lua` must enable servers before FileType.
+    event = { "BufReadPre", "BufNewFile" },
+    cmd = { "Mason", "MasonInstall", "MasonUpdate", "MasonLog" },
+    dependencies = {
+      "mason-org/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    config = function()
+      require("plugins.mason")
+    end,
+  },
+
+  -- _    ____ ___ _   _ ___  ____ _  _
+  -- |    |__|   /  \_/  |  \ |___ |  |
+  -- |___ |  | /__   |   |__/ |___  \/
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    dependencies = {
+      -- Annotation stubs only; inert unless lazydev feeds them to lua_ls.
+      { "DrKJeff16/wezterm-types", version = false },
+    },
+    config = function()
+      require("plugins.lazydev")
+    end,
+  },
 })
