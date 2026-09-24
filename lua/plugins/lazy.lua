@@ -32,6 +32,10 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
     lazy = false,  -- The main branch does not support lazy-loading.
+    -- cond, not enabled: `enabled = false` would drop it from the shared lockfile.
+    cond = function()
+      return vim.fn.executable("tree-sitter") == 1
+    end,
     build = ":TSUpdate",  -- Ensures parsers are up-to-date
     config = function()
       require("plugins.treesitter")
