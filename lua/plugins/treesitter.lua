@@ -1,4 +1,4 @@
-local parsers = { "lua", "vim", "bash", "python" }
+local parsers = { "lua", "vim", "bash", "python", "xml" }
 
 local ok, configs = pcall(require, "nvim-treesitter.configs")
 if ok then

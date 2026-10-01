@@ -60,3 +60,10 @@ opt.fileencoding = "utf-8"
 
 -- Misc
 g.mapleader = " "              -- Set <Leader> to space
+
+-- Filetypes Nvim does not detect on its own
+vim.filetype.add({
+  extension = {
+    xaml = "xml",              -- WPF/Avalonia/MAUI markup, plain XML underneath
+  },
+})
